@@ -6,12 +6,9 @@ class CreateTables < ActiveRecord::Migration[5.1]
     SQL
 
     create_table :users do |t|
-      t.string :email, null: false
-      t.string :first_name, null: false
-      t.string :last_name, null: false
-
-      #t.boolean :is_deactivated, default: false, null: false
-      #t.string :encrypted_password, default: "", null: false
+      #t.string :first_name, null: false
+      #t.string :last_name, null: false
+      t.boolean :is_deactivated, default: false, null: false
     end
     add_column :users, :role, :user_role, default: 'standard'
 
@@ -19,7 +16,7 @@ class CreateTables < ActiveRecord::Migration[5.1]
       t.integer :user_id, null: false
       t.text :description, limit: 300
       t.boolean :completed, default: false
-      t.boolean :archive, default: true
+      t.boolean :archived, default: false
       t.boolean :notification, default: false
     end
     add_column :todo_lists, :freq, :todo_list_freq, default: 'not set'

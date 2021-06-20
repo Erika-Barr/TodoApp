@@ -1,2 +1,33 @@
-<h1> just getting started </h1>
+<h1> Todo List Matrix </h1>
 <%= link_to "Create Todo List", new_todo_list_path, class: 'btn btn-primary'%>
+
+  <!-- TODO add Bootstrap 4 -->
+  <!-- TODO only render table if todo lists are present -->
+  <!-- TODO not seeing flash notices - look at devise instructions -->
+
+<% if @todo_lists.present? %>
+  <table class='table table-bordered'>
+    <tr>
+      <th>edit todo list</th>
+      <th>description</th>
+      <th>opt-in email notifications</th>
+      <th>freq</th>
+      <th>completed</th>
+      <th>archived</th>
+      <th>delete todo list</th>
+    </tr>
+    <% @todo_lists.each do |tl|%>
+      <tr id="todo-list-<%= tl.id %>">
+        <td><%= link_to "Edit Todo List", edit_todo_list_path(tl.id) %></td>
+        <td><%= tl.description %></td>
+        <td><%= tl.notification %></td>
+        <td><%= tl.freq %></td>
+        <td><%= tl.completed %></td>
+        <td><%= tl.archived %></td>
+       <td><%= link_to("Delete Todo List", todo_list_path(tl), data: {confirm: "Really delete this Todo List?", method: :delete}) %></td>
+        </tr>
+    <%end%>
+  </table>
+<%else%>
+  <p> No Todo Lists created yet. </p>
+<%end%>

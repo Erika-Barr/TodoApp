@@ -1,4 +1,8 @@
 
-<h4> New Todo Item </h4>
+<p> New Todo Item </p>
   <%= form.text_field :text %>
+
+  <%= form.label :completed %>
+  <%= form.check_box :completed %>
   <%#= link_to_remove_nested(form) # adds a link to remove the element # bug %>
+  <%# add a route to destroy an item if cannot fix bug %>
