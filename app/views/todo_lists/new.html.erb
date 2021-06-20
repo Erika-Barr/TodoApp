@@ -1,0 +1,16 @@
+<h1> Create a Todo List </h1>
+
+<%= form_for @todo_list do |todo_list_form| %>
+
+  <%= todo_list_form.text_field :description %>
+  <%= link_to_add_nested(todo_list_form, :todo_items, '#todo-items') %>
+
+  <div id='todo-items'>
+    <%= todo_list_form.fields_for :todo_items do |todo_item_form| %>
+
+      <%= render "todo_item_fields", form: todo_item_form  %>
+    <% end %>
+  </div>
+
+  <%= todo_list_form.submit %>
+<% end %>
