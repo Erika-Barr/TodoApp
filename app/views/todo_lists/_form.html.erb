@@ -1,0 +1,41 @@
+<%= form_for todo_list do |todo_list_form| %>
+
+  <div class="field">
+   <%= todo_list_form.label :description %> <br/>
+   <%= todo_list_form.text_field :description, class: "form-control" %> <br/>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-sm-3">
+      <%= todo_list_form.label :notification %>
+      <%= todo_list_form.check_box :notification, class: "form-check" %>
+    </div>
+
+    <div class="col-sm-3">
+      <%= todo_list_form.label :freq %>
+      <%= todo_list_form.select :freq, TodoList.freqs.keys, {}, class: "form-select-sm" %>
+    </div>
+
+    <div class="col-sm-3">
+      <%= todo_list_form.label :completed %>
+      <%= todo_list_form.check_box :completed, class: "form-check" %>
+    </div>
+
+    <div class="col-sm-3">
+      <%= todo_list_form.label :archived %>
+      <%= todo_list_form.check_box :archived, class: "form-check" %>
+    </div>
+  </div>
+
+  <div class="btn">
+  <%= link_to_add_nested(todo_list_form, :todo_items, '#todo-items') %>
+  </div>
+
+  <div id='todo-items'>
+    <%= todo_list_form.fields_for :todo_items do |todo_item_form| %>
+      <%= render "todo_item_fields", form: todo_item_form  %>
+    <% end %>
+  </div>
+
+  <%= submit_tag "Submit", class: "btn btn-primary" %>
+<% end %>

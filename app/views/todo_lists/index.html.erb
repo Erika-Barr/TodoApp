@@ -1,0 +1,45 @@
+<!-- TODO not seeing flash notices - look at devise instructions -->
+
+<div class="container-fluid">
+
+  <h3 class="mt-3">Full Text Search</h3>
+  <div class='row'>
+    <div class='col-sm-6'>
+    <%= form_tag todo_lists_path, method: :get, class: "d-flex mb-3" do %>
+      <%- placeholder = "Search yours todo lists and nested items"%>
+      <%= text_field_tag(:query, params[:query], placeholder: placeholder, class: "form-control me-2") %>
+      <%= submit_tag("Search", class: "btn btn-outline-success") %>
+    <%end%>
+    </div>
+  </div>
+
+  <% if @todo_lists.present? %>
+  <h3> Todo List Matrix </h3>
+    <table class='table table-bordered border-5'>
+      <tr>
+        <th>Edit</th>
+        <th>description</th>
+        <th>opt-in email notifications</th>
+        <th>freq</th>
+        <th>completed</th>
+        <th>archived</th>
+        <th>Delete</th>
+      </tr>
+      <% @todo_lists.each do |tl|%>
+        <tr id="todo-list-<%= tl.id %>">
+          <td><%= link_to "Edit Todo List", edit_todo_list_path(tl.id) %></td>
+          <td><%= tl.description %></td>
+          <td><%= tl.notification %></td>
+          <td><%= tl.freq %></td>
+          <td><%= tl.completed %></td>
+          <td><%= tl.archived %></td>
+         <td><%= link_to("Delete Todo List", todo_list_path(tl), data: {confirm: "Really delete this Todo List?", method: :delete}) %></td>
+          </tr>
+      <%end%>
+    </table>
+  <%else%>
+    <p> No Todo Lists. </p>
+  <%end%>
+
+  <%= link_to "Create Todo List", new_todo_list_path, class: 'btn btn-primary'%>
+</div>
