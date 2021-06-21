@@ -1,0 +1,12 @@
+batch_daily_todo_list:
+  cron: '0 0 8 * * * America/New_York'
+  class: BatchDailyTodoListWorker
+  description: 'Todo Lists are emailed at 8:00am EST'
+batch_weekly_todo_list:
+  cron: '0 0 8 * * 5 America/New_York'
+  class: BatchWeeklyTodoListWorker
+  description: 'Todo Lists are emailed weekly - every Friday 8:00am EST'
+batch_monthly_todo_list:
+  cron: '0 0 8 1 * * America/New_York'
+  class: BatchMonthlyTodoListWorker
+  description: 'Todo Lists are emailed monthly - first day 8:00am EST'
