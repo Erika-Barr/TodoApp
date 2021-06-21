@@ -3,6 +3,8 @@ class TodoList < ApplicationRecord
   belongs_to :user
   has_many :todo_items, inverse_of: :todo_list ,dependent: :destroy
   accepts_nested_attributes_for :todo_items, reject_if: :all_blank, allow_destroy: true
+  scope :frequency, -> (freq) { where(freq: freq) }
+  scope :email_opt_in, -> { where(notification: true) }
 
   include PgSearch::Model
   multisearchable(
