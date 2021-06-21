@@ -21,3 +21,8 @@
 - Email scheduling tests/specs
 
 
+## Additional Notes
+![CRC](https://user-images.githubusercontent.com/8174758/122718346-7058d600-d232-11eb-89e7-a9b4faae9c60.png)
+
+
+
