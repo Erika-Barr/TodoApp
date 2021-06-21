@@ -12,11 +12,16 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-        <%= form_for(:session, url: destroy_user_session_path, method: :delete) do |f| %>
-          <%= f.submit "Logout", class: "btn-link" %>
+
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <% if user_signed_in? %>
+          <%= form_for(:session, url: destroy_user_session_path, method: :delete) do |f| %>
+            <%= f.submit "Logout", class: "btn-link" %>
+          <% end %>
         <% end %>
-    <% end %>
+      </div>
+    </nav>
 
     <%= yield %>
 

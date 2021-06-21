@@ -1,19 +1,19 @@
 FactoryBot.define do
+  # is_deactivated: false, role: "standard"
   factory :user do
     email { "fake@email.com" }
-    first_name { "Erika" }
-    last_name { "Barr" }
+    password { ';Testtesttest1' }
   end
 
   factory :todo_list do
     description { "Things to do this week" }
     freq { "weekly" }
-    user_id { create(:user).id }
+    user { create(:user) }
     #notification { true }
   end
 
   factory :todo_item do
     text { "Car inspection" }
-    todo_list_id { create(:todo_list).id }
+    todo_list { create(:todo_list) }
   end
 end

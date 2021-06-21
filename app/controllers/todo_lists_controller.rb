@@ -3,7 +3,13 @@ class TodoListsController < ApplicationController
   before_action :set_todo_list, only: [:edit, :update, :destroy]
 
   def index
-    @todo_lists = current_user.todo_lists
+    if params[:query].present?
+      @todo_lists = PgSearch.multisearch(params[:query]).
+        where(user_id: current_user.id).
+        map(&:searchable)
+    else
+      @todo_lists = current_user.todo_lists.all
+    end
   end
 
   def new
@@ -14,6 +20,7 @@ class TodoListsController < ApplicationController
   def create
     @todo_list = current_user.todo_lists.new(todo_list_params)
     if @todo_list.save
+      @todo_list.update_pg_search_document
       redirect_to root_path, notice: "Todo List created."
     else
       render 'new'

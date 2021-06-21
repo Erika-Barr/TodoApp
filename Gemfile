@@ -10,6 +10,9 @@ end
 gem 'rails', '~> 5.1.7'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
+# full text search
+gem 'pg_search'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -43,6 +46,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-sidekiq'
   gem 'factory_bot_rails'
+  gem 'capybara'
+  gem 'capybara-selenium'
   #gem 'database_cleaner-active_record'
 end
 

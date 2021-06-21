@@ -1,6 +1,6 @@
 
 <p> New Todo Item </p>
-  <%= form.text_field :text %>
+  <%= form.text_field :text, id: "todo_list_todo_items_attributes_#{form.index}" %>
 
   <%= form.label :completed %>
   <%= form.check_box :completed %>

@@ -2,30 +2,34 @@
 
   <div class="field">
    <%= todo_list_form.label :description %> <br/>
-   <%= todo_list_form.text_field :description %> <br/>
+   <%= todo_list_form.text_field :description, class: "form-control" %> <br/>
   </div>
 
-  <div class="field">
-    <%= todo_list_form.label :notification %>
-    <%= todo_list_form.check_box :notification %>
+  <div class="row mb-3">
+    <div class="col-sm-3">
+      <%= todo_list_form.label :notification %>
+      <%= todo_list_form.check_box :notification, class: "form-check" %>
+    </div>
+
+    <div class="col-sm-3">
+      <%= todo_list_form.label :freq %>
+      <%= todo_list_form.select :freq, TodoList.freqs.keys, {}, class: "form-select-sm" %>
+    </div>
+
+    <div class="col-sm-3">
+      <%= todo_list_form.label :completed %>
+      <%= todo_list_form.check_box :completed, class: "form-check" %>
+    </div>
+
+    <div class="col-sm-3">
+      <%= todo_list_form.label :archived %>
+      <%= todo_list_form.check_box :archived, class: "form-check" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= todo_list_form.label :freq %>
-    <%= todo_list_form.select :freq, TodoList.freqs.keys, {}, class: 'todolist-freqs-select' %>
-  </div>
-
-  <div class="field">
-    <%= todo_list_form.label :completed %>
-    <%= todo_list_form.check_box :completed %>
-  </div>
-
-  <div class="field">
-    <%= todo_list_form.label :archived %>
-    <%= todo_list_form.check_box :archived %>
-  </div>
-
+  <div class="btn">
   <%= link_to_add_nested(todo_list_form, :todo_items, '#todo-items') %>
+  </div>
 
   <div id='todo-items'>
     <%= todo_list_form.fields_for :todo_items do |todo_item_form| %>
@@ -33,5 +37,5 @@
     <% end %>
   </div>
 
-  <%= todo_list_form.submit %>
+  <%= submit_tag "Submit", class: "btn btn-primary" %>
 <% end %>

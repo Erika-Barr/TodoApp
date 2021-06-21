@@ -6,7 +6,7 @@ RSpec.describe TodoList, type: :model do
   it { should have_many(:todo_items).dependent(:destroy) }
   it { should have_db_column(:description) }
   it { should have_db_column(:completed) }
-  it { should have_db_column(:archive) } # TODO rename column to archived
+  it { should have_db_column(:archived) }
   it { should have_db_column(:notification) }
   it do
     should define_enum_for(:freq).
