@@ -1,8 +1,10 @@
+
 # TodoApp Overview
 
-## **the plan**
+## **The plan**
+![Screen Shot 2021-06-21 at 12 29 23 AM](https://user-images.githubusercontent.com/8174758/122711471-cecc8700-d227-11eb-9c03-aa30424fb714.png)
 
-## **finished**
+## **Finished**
 
 - User login/logout auth - devise
 - CRUD Todo Lists
@@ -13,7 +15,7 @@
 
 
 
-## **unfinished**
+## **Unfinished**
 
 - ES full text search
 - Email scheduling tests/specs
