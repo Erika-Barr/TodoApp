@@ -29,7 +29,8 @@ RUN yarn install
 RUN gem install bundler -v 2.0.1
 RUN bundle install
 
-ENTRYPOINT ["bin/rails"]
-CMD ["s", "-b", "0.0.0.0"]
+#ENTRYPOINT ["bin/rails"]
+#CMD ["s", "-b", "0.0.0.0"]
+#CMD ["bundle", "exec", "sidekiq"]
 
 EXPOSE 3000

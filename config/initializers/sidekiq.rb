@@ -3,7 +3,7 @@ require 'yaml'
 sidekiq_config = {
   :redis => {
     :namespace => "todoapp_sidekiq_#{Rails.env}",
-    :url => Rails.application.secrets["redis_url"] || "redis://localhost"
+    :url => Rails.application.secrets["redis_url_sidekiq"] || "redis://localhost"
   }
 }
 
